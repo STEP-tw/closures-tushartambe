@@ -30,7 +30,13 @@ const makeDeltaTracker = function(initialValue) {
 
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;
-const curry = undefined;
+
+const curry = function(actionToDo,doWith) {
+  return function(firstElement,secondElement) {
+    return actionToDo(doWith,firstElement,secondElement);
+  }
+}
+
 const compose = undefined;
 
 exports.makeConstant=makeConstant;
