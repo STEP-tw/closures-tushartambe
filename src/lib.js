@@ -37,8 +37,8 @@ const secondTermForCalculation = function(firstTerm,secondTerm) {
 }
 const makeFiboGenerator = function(firstTerm,secondTerm) {
   if(!firstTerm && !secondTerm) {
-    secondTerm = 1;
     firstTerm = 0;
+    secondTerm = 1;
   }
   if(!secondTerm) {
     secondTerm = firstTerm;
@@ -56,7 +56,24 @@ const makeFiboGenerator = function(firstTerm,secondTerm) {
   }
 }
 
-const makeCycler = undefined; 
+const makeCycler = function(chain) {
+  rotatePoint = 0;
+  let originalChain = [];
+  for(let counter=0;counter<chain.length;counter++) {
+    originalChain[counter] = chain[counter];
+  }
+
+  const arrayLength = originalChain.length;
+  return function() {
+    if(rotatePoint == arrayLength) {
+      rotatePoint = 0;
+    }
+    result = originalChain[rotatePoint];
+    rotatePoint ++;
+    return originalChain[rotatePoint-1];
+  }
+} 
+
 const curry = function(actionToDo,doWith) {
   return function(firstElement,secondElement) {
     return actionToDo(doWith,firstElement,secondElement);
