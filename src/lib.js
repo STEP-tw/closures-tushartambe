@@ -17,7 +17,17 @@ const makeCounterFromZero = function() {
     return counter++;
   }
 }
-const makeDeltaTracker = undefined;
+const makeDeltaTracker = function(initialValue) {
+  return function(deltaValue) {
+    
+    if(!deltaValue) {
+      deltaValue = 0;
+    }
+
+    return {old:initialValue, delta:deltaValue, new:initialValue = (initialValue+deltaValue)};
+  }
+}
+
 const makeFiboGenerator = undefined;
 const makeCycler = undefined;
 const curry = undefined;
