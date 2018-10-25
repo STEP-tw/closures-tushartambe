@@ -37,7 +37,12 @@ const curry = function(actionToDo,doWith) {
   }
 }
 
-const compose = undefined;
+const compose = function(firstAction,secondAction) {
+  return function(firstDataSet,sendDataSet) {
+    let result = secondAction(firstDataSet,sendDataSet);
+    return firstAction(result);
+  }
+}
 
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
