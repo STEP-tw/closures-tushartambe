@@ -28,25 +28,22 @@ const makeDeltaTracker = function(initialValue) {
   }
 }
 
-const firstTermForCalculation = function(firstTerm,secondTerm) {
-  return firstTerm - secondTerm;
-}
-
-const secondTermForCalculation = function(firstTerm,secondTerm) {
-  return secondTerm - firstTerm;
-}
 const makeFiboGenerator = function(firstTerm,secondTerm) {
+  if(firstTerm && secondTerm) {
+    secondTerm = secondTerm - firstTerm;
+    firstTerm = firstTerm - secondTerm;
+  }
+
   if(!firstTerm && !secondTerm) {
-    firstTerm = 0;
+    firstTerm = -1;
     secondTerm = 1;
   }
   if(!secondTerm) {
     secondTerm = firstTerm;
     firstTerm = 0;
+    secondTerm = secondTerm - firstTerm;
+    firstTerm = firstTerm - secondTerm;
   }
-
-  secondTerm = secondTermForCalculation(firstTerm,secondTerm);
-  firstTerm = firstTermForCalculation(firstTerm,secondTerm);
 
   return function() {
     result = firstTerm+secondTerm;
