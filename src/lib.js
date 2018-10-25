@@ -58,10 +58,7 @@ const makeFiboGenerator = function(firstTerm,secondTerm) {
 
 const makeCycler = function(chain) {
   rotatePoint = 0;
-  let originalChain = [];
-  for(let counter=0;counter<chain.length;counter++) {
-    originalChain[counter] = chain[counter];
-  }
+  let originalChain = chain.slice();
 
   const arrayLength = originalChain.length;
   return function() {
